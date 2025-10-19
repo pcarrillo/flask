@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block head %}
+Nueva Entidad
+{% endblock head %}
+
+{%block body%}            
+{% if opcion=="editar"  %}
+    {%for ent in entidad%} 
+        <div>
+                <div class="border-bottom mb-4 pb-3 bg-body-primary">                
+                        <span class="fs-3">Editar entidad</span>                 
+                </div>
+
+                <div class="mb-4 bg-body-primary rounded-3">                   
+                    <form action="/entidades/editar/{{ent.id}}" method="POST"> 
+                        <input type="hidden" name="tipo_original" value="{{ent.tipo}}"                       
+                        <div class="mb-3 mt-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre de la entidad" name="nombre" value="{{ent.nombre}}">
+                        </div>                    
+                        <div class="mb-3">                            
+                            <label for="tipo" class="form-label">Tipo:</label>
+                            <select class="form-select" id="tipo" name="tipo">
+                                {%for tipo in tipos%}  
+                                    {% if  tipo.nombre == ent.tipo%}
+                                        <option value="{{tipo.nombre}}" selected>{{tipo.nombre}}</option>
+                                    {% else %}
+                                        <option value="{{tipo.nombre}}">{{tipo.nombre}}</option>
+                                    {% endif %}
+                                    
+                                    {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Grabar</button>
+                        </div>
+                    </form>                
+                </div>                                                      
+            </div>  
+            {% endfor %}
+{% else %}
+    <div>
+        <div class="border-bottom mb-4 pb-3 bg-body-primary">                
+                <span class="fs-3">Nueva entidad</span>                 
+        </div>
+
+        <div class="mb-4 bg-body-primary rounded-3">                   
+            <form action="/entidades/guardar" method="POST">
+                <div class="mb-3 mt-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre de la entidad" name="nombre">
+                </div>                    
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">Tipo:</label>
+                    <select class="form-select" id="tipo" name="tipo">
+                        {%for tipo in tipos%}  
+                            <option value="{{tipo.nombre}}">{{tipo.nombre}}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Grabar</button>
+                </div>
+            </form>                
+        </div>                                                      
+    </div>  
+{% endif %}        
+        
+{% endblock %}        
+        
+
+

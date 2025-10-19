@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive email layout.">
+    <title>{% block head %}{% endblock%}</title>
+    
+    <link rel="stylesheet" href="{{url_for("static", filename="styles.css")}}">
+    <link rel="stylesheet" href="{{url_for("static", filename="/bootstrap/css/bootstrap.css")}}">
+    
+</head>
+<body class="bg-body-tertiary">
+
+ 
+<div class="container p-5">
+    <div class="row bg-primary p-3 mb-5 rounded-3">
+        <span class="text-white">ROMA</span>
+    </div>
+    <div class="row">
+
+        <div class="col .bg-primary.bg-gradient">
+            <div class="sidebar p-3 mb-5 bg-body-primary rounded-3">
+                {% include "menu.html" without context %}
+            </div>
+        </div>
+    
+        <div class="col-9  p-3 mb-5 bg-body-light rounded-3">
+            {% block body %}
+            {% endblock%}
+        </div>
+    </div>
+<div>
+
+</body>
+</html>
