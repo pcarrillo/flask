@@ -131,8 +131,6 @@ def entidades_actualizar(id):
         tipos = [dict(zip(meta_tipos, row2)) for row2 in results_tipos]             
         return render_template("nueva_entidad.html", entidad=entidad, tipos=tipos, opcion="editar")
                         
-          
-
 
 if __name__ =='__main__':
     app.run(debug=True)
