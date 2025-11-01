@@ -14,18 +14,18 @@
 
  
 <div class="container p-5">
-    <div class="row bg-primary p-3 mb-5 rounded-3">
+    <!--<div class="row bg-primary p-3 mb-5 rounded-3">
         <span class="text-white">ROMA</span>
-    </div>
+    </div>-->
     <div class="row">
 
         <div class="col .bg-primary.bg-gradient">
-            <div class="sidebar p-3 mb-5 bg-body-primary rounded-3">
+            <div class="sidebar p-3 mb-5 bg-body-primary rounded-3 shadow-lg">
                 {% include "menu.html" without context %}
             </div>
         </div>
     
-        <div class="col-9  p-3 mb-5 bg-body-light rounded-3">
+        <div class="col-9  p-3 mb-5 bg-body-light rounded-3 shadow-lg">
             {% block body %}
             {% endblock%}
         </div>
