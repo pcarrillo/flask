@@ -7,7 +7,7 @@ Detalles de Entidad
 
 {%block body%}          
 
-{{entidad}}
+
       {%for ent in entidad%} 
         <div class="p-4">
             <div class="border-bottom mb-4 pb-3 bg-body-primary">                
@@ -24,7 +24,7 @@ Detalles de Entidad
                 </div>
 
                 {% if ent.tipo == "Persona" %}
-                    <p>Aquí irán los formularios</p>
+                    <p>Persona...</p>
                 {% endif %}
                 
                 
@@ -52,12 +52,7 @@ Detalles de Entidad
                                 <td>Tipo</td>
                                 <td>{{ent.tipo}}</td>
                                 <td></td>
-                            </tr>
-                            <tr>                            
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td></td>
-                            </tr>
+                            </tr>                        
                         </tbody>
                     </table>
                 </div>
@@ -86,12 +81,7 @@ Detalles de Entidad
                                 <td>Tipo</td>
                                 <td>{{ent.tipo}}</td>
                                 <td></td>
-                            </tr>
-                            <tr>                            
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td></td>
-                            </tr>
+                            </tr>                            
                         </tbody>
                     </table>
                 </div>
