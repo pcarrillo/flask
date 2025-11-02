@@ -1,5 +1,33 @@
 from neomodel import (config, StructuredNode, StringProperty, IntegerProperty,
-                      UniqueIdProperty, RelationshipTo, db)
+                      UniqueIdProperty, RelationshipTo, db, DateProperty)
+
+class Type(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+
+class Place(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+
+class Date(StructuredNode):
+    uid = UniqueIdProperty()
+    value =  DateProperty()
+
+class Event(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+    
+class Entity(StructuredNode):  
+  uid = UniqueIdProperty()  
+  name =  StringProperty(unique_index=True,required=True )
+  type = RelationshipTo(Type, 'hasOrHadCategory')
+
+class Person(StructuredNode):  
+  name =  StringProperty(unique_index=True,required=True )
+  type = RelationshipTo(Type, 'hasOrHadCategory')
+  place_of_birth = RelationshipTo(Place, 'hasBirthPlace')
+  date_of_birth = RelationshipTo(Date, 'hasBirthDate')
+
 
 class Datos:
     def __init__(self):
@@ -31,7 +59,7 @@ class Datos:
         results, meta = db.cypher_query(query)
 
     def buscarEntidad(self, id_entidad):
-        query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name as tipo"
+        query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name as tipo, e.uid as uid"
         results, meta = db.cypher_query(query)
         entidad = [dict(zip(meta, row)) for row in results] 
         return entidad
