@@ -5,6 +5,12 @@ class Type(StructuredNode):
     uid = UniqueIdProperty()
     name =  StringProperty(unique_index=True,required=True )
     
+
+class Name(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+    type = RelationshipTo(Type, 'hasOrHadType')
+    
 class Predicate(StructuredNode):
     uid = UniqueIdProperty()
     name =  StringProperty(unique_index=True,required=True )
@@ -21,6 +27,10 @@ class Event(StructuredNode):
     uid = UniqueIdProperty()
     name =  StringProperty(unique_index=True,required=True )
 
+class Identifier(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+    
 
 
 class Entity(StructuredNode):  
@@ -34,6 +44,20 @@ class Person(StructuredNode):
     uid = UniqueIdProperty()
     name =  StringProperty(unique_index=True,required=True )
     
+class Agent(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+
+class CorporateBody(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+    type = RelationshipTo(Type, 'hasOrHadType')
+    identifier = RelationshipTo(Identifier, 'hasOrHadIdentifier')
+    authorize_name = RelationshipTo(Name, 'hasOrHadName')
+    parallel_name = RelationshipTo(Name, 'hasOrHadName')
+    other_name = RelationshipTo(Name, 'hasOrHadName')
+    
+
     
 
 class Datos:
@@ -88,7 +112,8 @@ class Datos:
         return entidades
     
     def Instituciones_ver(self):
-        query = "match(n:Entity)-[r:hasOrHadCategory]->(t:Type{name_es:'Institución'}) return elementId(n) as id, n.name as nombre ORDER BY n.name"
+        #query = "match(n:Entity)-[r:hasOrHadCategory]->(t:Type{name_es:'Institución'}) return elementId(n) as id, n.name as nombre ORDER BY n.name"
+        query="MATCH (n:CorporateBody) return elementId(n) as id, n.name as nombre ORDER BY n.name"
         results, meta = db.cypher_query(query)
         instituciones = [dict(zip(meta, row)) for row in results] 
         return instituciones
