@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block head %}
+Entidades
+{% endblock head %}
+
+{%block body%}
+
+
+<div class="mb-5 p-3">
+    <div class="mb-3">
+        <a href="/entidades/crear" class="btn btn-primary">Nueva entidad</a>
+    </div>
+
+
+<table class="table table-striped border">
+    <thead>
+        <tr>
+            <th>Entidad</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for entidad in entidades%}           
+                
+        <tr class="">
+            <td>
+                <a href="/entidades/ver/{{entidad.id}}" class="hover-underline list-group-item list-group-item-action">{{entidad.nombre}}</a>     
+            </td>
+            <td>{{entidad.tipo}}</td>                    
+        </tr>
+        
+
+
+        {% endfor %}
+
+    </tbody>
+</table>
+</div>
+{% endblock %}        
+        
+    
+
+        
+        <!--
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content"/>
+        <input type="submit" name="submit" value="Nueva Tarea" id="btn_add" />
+    </form>
+    -->
+
+
+

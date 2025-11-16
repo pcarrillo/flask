@@ -6,8 +6,10 @@
     <meta name="description" content="A layout example that shows off a responsive email layout.">
     <title>{% block head %}{% endblock%}</title>
     
-    <link rel="stylesheet" href="{{url_for("static", filename="styles.css")}}">
+    <link rel="stylesheet" href="{{url_for("static", filename="styles.css")}}">    
     <link rel="stylesheet" href="{{url_for("static", filename="/bootstrap/css/bootstrap.css")}}">
+    <script defer src="https://unpkg.com/alpinejs@3.15.1/dist/cdn.min.js"></script>
+    
     
 </head>
 <body class="bg-body-tertiary">
@@ -20,17 +22,18 @@
     <div class="row">
 
         <div class="col .bg-primary.bg-gradient">
-            <div class="sidebar p-3 mb-5 bg-body-primary rounded-3 shadow-lg">
+            <div class="sidebar p-3 mb-3 bg-white rounded-3 shadow-sm">
                 {% include "menu.html" without context %}
             </div>
         </div>
     
-        <div class="col-9  p-3 mb-5 bg-body-light rounded-3 shadow-lg">
+        <div class="col-10  p-5 mb-5 bg-white rounded-3 shadow-sm">
             {% block body %}
             {% endblock%}
         </div>
     </div>
 <div>
-
+    
+<script src="{{ url_for('static', filename='/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

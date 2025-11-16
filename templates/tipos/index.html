@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block head %} Tipos {% endblock head %} {%block
+body%}
+
+<div class="list-group">
+  <div class="mb-3">
+    <a href="/tipos/nuevo" class="btn btn-primary">Nuevo Tipo</a>
+  </div>
+
+  {% if tipos %} {%for tipo in tipos%}
+  <!--Inicio unidad-->
+
+  <a
+    href="/instituciones/ver/{{tipo.id}}"
+    class="list-group-item list-group-item-action"
+  >
+    <div class="d-flex w-100 justify-content-between">
+      <h6 class="mb-1">{{tipo.nombre}}</h6>
+    </div>
+  </a>
+
+  {% endfor %} {% else %}
+  <p>No hay instituciones</p>
+  {% endif %}
+</div>
+{% endblock %}
+
+<!--
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content"/>
+        <input type="submit" name="submit" value="Nueva Tarea" id="btn_add" />
+    </form>
+    -->

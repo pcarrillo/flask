@@ -24,9 +24,9 @@ Nueva Entidad
                             <select class="form-select" id="tipo" name="tipo">
                                 {%for tipo in tipos%}  
                                     {% if  tipo.nombre == ent.tipo%}
-                                        <option value="{{tipo.nombre}}" selected>{{tipo.nombre}}</option>
+                                        <option value="{{tipo.nombre}}" selected>{{tipo.nombre_es}}</option>
                                     {% else %}
-                                        <option value="{{tipo.nombre}}">{{tipo.nombre}}</option>
+                                        <option value="{{tipo.nombre}}">{{tipo.nombre_es}}</option>
                                     {% endif %}
                                     
                                     {% endfor %}
@@ -55,7 +55,7 @@ Nueva Entidad
                     <label for="tipo" class="form-label">Tipo:</label>
                     <select class="form-select" id="tipo" name="tipo">
                         {%for tipo in tipos%}  
-                            <option value="{{tipo.nombre}}">{{tipo.nombre}}</option>
+                            <option value="{{tipo.nombre}}">{{tipo.nombre_es}}</option>
                             {% endfor %}
                     </select>
                 </div>

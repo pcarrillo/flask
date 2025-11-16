@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block head %}
+Inicio
+{% endblock head %}
+
+{%block body%}
+
+{# 
+ 
+  Nivceles de descripción  de Indias
+Archivo General de Indias
+  Colección
+  Fondo
+    Serie
+      Subserie
+        Fracción de Serie-Unidad de Instalación
+  Sección
+    Serie
+      Fracción de Serie-Unidad de Instalación
+    1ª División - Pueden haber más
+      Fracción de Serie-Unidad de Instalación
+  
+  Grupo de Fondos
+    Fondo
+      Fracción de Serie-Unidad de Instalación
+    Fracción de Serie-Unidad de Instalación
+    Colección
+  
+  
+    
+  
+
+  Sección
+
+
+  
+  #}
+
+
+<div class="list-group">
+<div class="mb-3">    
+    <a href="/institucines/nueva" class="btn btn-primary">Nueva Institución</a>
+</div>
+
+{% if instituciones %}
+
+{%for institucion in instituciones%}           
+    <!--Inicio unidad-->       
+    
+
+    <a href="/instituciones/ver/{{institucion.id}}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{institucion.nombre}}</h6>
+        </div>
+        
+                    
+    </a>
+
+    {% endfor %}
+{% else %}
+    <p>No hay instituciones</p>
+{% endif %}
+    </div>
+{% endblock %}        
+        
+    
+
+        
+        <!--
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content"/>
+        <input type="submit" name="submit" value="Nueva Tarea" id="btn_add" />
+    </form>
+    -->
+
+
+

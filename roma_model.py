@@ -4,6 +4,10 @@ from neomodel import (config, StructuredNode, StringProperty, IntegerProperty,
 class Type(StructuredNode):
     uid = UniqueIdProperty()
     name =  StringProperty(unique_index=True,required=True )
+    
+class Predicate(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
 
 class Place(StructuredNode):
     uid = UniqueIdProperty()
@@ -16,18 +20,21 @@ class Date(StructuredNode):
 class Event(StructuredNode):
     uid = UniqueIdProperty()
     name =  StringProperty(unique_index=True,required=True )
-    
+
+
+
 class Entity(StructuredNode):  
   uid = UniqueIdProperty()  
-  name =  StringProperty(unique_index=True,required=True )
-  type = RelationshipTo(Type, 'hasOrHadCategory')
-
-class Person(StructuredNode):  
   name =  StringProperty(unique_index=True,required=True )
   type = RelationshipTo(Type, 'hasOrHadCategory')
   place_of_birth = RelationshipTo(Place, 'hasBirthPlace')
   date_of_birth = RelationshipTo(Date, 'hasBirthDate')
 
+class Person(StructuredNode):
+    uid = UniqueIdProperty()
+    name =  StringProperty(unique_index=True,required=True )
+    
+    
 
 class Datos:
     def __init__(self):
@@ -59,7 +66,7 @@ class Datos:
         results, meta = db.cypher_query(query)
 
     def buscarEntidad(self, id_entidad):
-        query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name as tipo, e.uid as uid"
+        query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name_es as tipo, e.uid as uid"
         results, meta = db.cypher_query(query)
         entidad = [dict(zip(meta, row)) for row in results] 
         return entidad
@@ -75,8 +82,38 @@ class Datos:
         return results
 
     def verEntidades(self):
-        query = "MATCH (c:Entity)-[r:hasOrHadCategory]->(t:Type) RETURN elementId(c) as id, c.name as nombre ,t.name as tipo ORDER BY c.name"
+        query = "MATCH (c:Entity)-[r:hasOrHadCategory]->(t:Type) RETURN elementId(c) as id, c.name as nombre ,t.name_es as tipo ORDER BY c.name"
         results, meta = db.cypher_query(query)
         entidades = [dict(zip(meta, row)) for row in results] 
         return entidades
+    
+    def Instituciones_ver(self):
+        query = "match(n:Entity)-[r:hasOrHadCategory]->(t:Type{name_es:'Institución'}) return elementId(n) as id, n.name as nombre ORDER BY n.name"
+        results, meta = db.cypher_query(query)
+        instituciones = [dict(zip(meta, row)) for row in results] 
+        return instituciones
+    
+    def Personas_ver(self):
+        query = "match(n:Entity)-[r:hasOrHadCategory]->(t:Type{name_es:'Persona'}) return elementId(n) as id,n.uid as uid, n.name as nombre ORDER BY n.name"
+        results, meta = db.cypher_query(query)
+        personas = [dict(zip(meta, row)) for row in results] 
+        return personas
+    
+    def Predicates_index(self):
+        query = "match(n:Predicate) return elementId(n) as id,n.uid as uid, n.name as nombre ORDER BY n.name"
+        results, meta = db.cypher_query(query)
+        predicates = [dict(zip(meta, row)) for row in results] 
+        return predicates
+    
+    def Personas_show(self, id_entidad):
+        query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type{name:'Person'}) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name_es as tipo, e.uid as uid"
+        results, meta = db.cypher_query(query)
+        persona = [dict(zip(meta, row)) for row in results] 
+        return persona
         
+    # Tipos
+    def tipos_ver(self):
+        query = "MATCH(n:Type) RETURN elementId(n) as id, n.name as nombre ORDER BY n.name"
+        results, meta = db.cypher_query(query)
+        tipos = [dict(zip(meta, row)) for row in results] 
+        return tipos

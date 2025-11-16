@@ -5,10 +5,50 @@ Detalles de Entidad
 {% endblock head %}
 
 {%block body%}          
-      {%for ent in entidad%} 
+      {%for p in persona%} 
+        <!-- Inicio Modal-->
+        <div class="modal fade" id="agregarAtributo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered p5">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Atributo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/personas/crear" method="post">
+      <div class="modal-body">        
+          <div class="mb-3 row">
+            <div class="col">
+                <label for="predicate" class="form-label">Propiedad</label>
+                <select class="form-select" id="predicate" name="predicate" aria-label="Default select example">
+                    <option selected disabled>Selecciones Propiedad</option>
+                    {% for pr in predicates %}
+                     <option value="{{pr.nombre}}">{{pr.nombre}}</option>       
+                    {% endfor %}
+                    
+                    
+                </select>
+            </div>           
+            <div class="col">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text"  class="form-control" name="nombre" id="nombre"> 
+            </div>            
+          </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Grabar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+        <!-- Fin Modal-->
+
+
+
         <div class="p-4">
             <div class="border-bottom mb-4 pb-3 bg-body-primary">                
-                <span class="fs-3">{{ent.nombre}}</span>  <span><a href="/entidades/editar/{{ent.uid}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <span class="fs-3">{{p.nombre}}</span>  <span><a href="/entidades/editar/{{p.uid}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
 </svg></a></span>
@@ -17,14 +57,17 @@ Detalles de Entidad
 
             <div class="mb-4 bg-body-primary rounded-3 ">    
                 <div class="mb-3">
-                    <span class="fs-5">Propiedades</span>
+                    <span class="fs-5">Propiedades</span> <a href="/entidades/crear" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarAtributo"> + </a>
                 </div>
 
-                {% if ent.tipo == "Persona" %}
+                
+
+                {% if p.tipo == "Persona" %}
                     <!--<p>Persona...</p>-->
                 {% endif %}
 
                 <div>
+                    
                     <table class="table bg-light border table-striped">
                         <thead>
                             <tr>                            
@@ -36,12 +79,12 @@ Detalles de Entidad
                         <tbody>
                             <tr>                            
                                 <td>Nombre</td>
-                                <td>{{ent.nombre}}</td>
+                                <td>{{p.nombre}}</td>
                                 <td><a href="#">e</a></td>
                             </tr>
                             <tr>                            
                                 <td>Tipo</td>
-                                <td>{{ent.tipo}}</td>
+                                <td>{{p.tipo}}</td>
                                 <td></td>
                             </tr>                        
                         </tbody>
@@ -50,7 +93,7 @@ Detalles de Entidad
             </div>
             <div class="mb-5 bg-body-primary rounded-3">    
                 <div class="mb-3">
-                    <span class="fs-5">Relaciones</span>
+                    <span class="fs-5">Relaciones</span> <a href="/entidades/crear" class="btn btn-primary"> + </a>
                 </div>            
                 <div>
                     <table class="table border table-striped">
@@ -64,12 +107,12 @@ Detalles de Entidad
                         <tbody>
                             <tr>                            
                                 <td>Nombre</td>
-                                <td>{{ent.nombre}}</td>
+                                <td>{{p.nombre}}</td>
                                 <td><a href="#">e</a></td>
                             </tr>
                             <tr>                            
                                 <td>Tipo</td>
-                                <td>{{ent.tipo}}</td>
+                                <td>{{p.tipo}}</td>
                                 <td></td>
                             </tr>                            
                         </tbody>

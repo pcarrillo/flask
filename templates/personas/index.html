@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block head %}
+Inicio
+{% endblock head %}
+
+{%block body%}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered p5">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Persona</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/personas/crear" method="post">
+      <div class="modal-body">        
+          <div class="mb-3 row">           
+            <div class="col">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text"  class="form-control" name="nombre" id="nombre"> 
+            </div>
+            {# <div class="col">
+                <label for="nombre" class="form-label">Identificador</label>
+                <input type="text" class="form-control" name="identificador" id="identificador">
+            </div> #}
+          </div> 
+          
+          {# <div class="mb-3 row"> 
+            
+            <div class="col">
+                <label for="lnacimiento" class="form-label">Lugar de Nacimiento</label>
+                <input type="text" class="form-control" name="lnacimeinto" id="lnacimiento">
+            </div>
+            <div class="col">
+              <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">                                                               
+            </div>
+          </div> #}
+
+          {# <div class="mb-3 row"> 
+            <div class="col">
+                <label for="lnacimiento" class="form-label">Lugar de Fallecimiento</label>
+                <input type="text" class="form-control" name="lnacimeinto" id="lnacimiento">
+            </div>
+            <div class="col">
+              <label for="fecha_fallecimiento" class="form-label">Fecha de Fallecimiento</label>
+              <input type="date" class="form-control" id="fecha_fallecimiento" name="fecha_fallecimiento">                                                               
+            </div>
+            
+          </div> #}
+            
+                               
+         
+          
+               
+          {# <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="nota" class="form-label">Nota</label>            
+            <textarea class="form-control" id="nota" name="nota" rows="3"></textarea>
+          </div> #}
+              
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Grabar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="list-group">
+<div class="mb-3">    
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Nueva Persona</button>
+</div>
+
+{% if personas %}
+
+<table class="table border">
+  <thead>
+      <tr>                            
+        <th scope="col">Nombre</th>
+        <th scope="col"></th>                            
+      </tr>
+  </thead>
+  <tbody>
+
+
+
+  {%for persona in personas%}           
+    <!--Inicio unidad-->       
+    <tr>
+      <td>
+        <a href="/personas/ver/{{persona.id}}" class="">        
+            {{persona.nombre}}        
+        </a>
+      </td>
+      <td>
+        <span>
+          <a href="/personas/editar/{{persona.uid}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+            </svg>
+          </a>
+        </span>          
+      </td>
+    </tr>
+
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+    <p>No hay Personas</p>
+{% endif %}
+    </div>
+{% endblock %}        
+        
+    
+
+        
+        <!--
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content"/>
+        <input type="submit" name="submit" value="Nueva Tarea" id="btn_add" />
+    </form>
+    -->
+
+
+

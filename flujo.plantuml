@@ -1,0 +1,38 @@
+@startuml uno
+
+start
+:Crear Entidad;
+switch (¿Tipo de Entidad?)
+case (Institución)
+    :+ Institución;
+    :+ Repositorio;
+    :+ Fondo;
+    :+ Sección;
+    
+     
+case (Recurso Documental)   
+    :+ Expediente;
+    :+ Documento;
+    label atributos
+    repeat
+        :Agregar Atributos;        
+    repeat while (Más atributos?)
+    repeat
+        :Agregar Relación;
+    repeat while (Más Relaciones?)
+case (Persona)
+    goto atributos
+    repeat 
+        :Crear Nombre;
+    repeat while (Otros nombres?)
+    :+ Fecha de Nacimiento;
+    :+ Lugar de Nacimeinto;
+    if (Persona viva?) then (no)
+        :Crear Fecha de Muerte;
+        :Crear Lugar de Muerte;
+    endif
+case (Evento)
+case (Persona)
+endswitch
+stop
+@enduml

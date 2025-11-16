@@ -1,31 +1,34 @@
 {% extends "base.html" %}
 
 {% block head %}
-Detalles de Entidad
+Detalles de Institución
 {% endblock head %}
 
 {%block body%}          
-      {%for ent in entidad%} 
+      {%for i in institucion%} 
         <div class="p-4">
             <div class="border-bottom mb-4 pb-3 bg-body-primary">                
-                <span class="fs-3">{{ent.nombre}}</span>  <span><a href="/entidades/editar/{{ent.uid}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <span class="fs-3">{{i.nombre}}</span>  <span><a href="/entidades/editar/{{i.uid}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
 </svg></a></span>
                 
             </div>
 
-            <div class="mb-4 bg-body-primary rounded-3 ">    
-                <div class="mb-3">
-                    <span class="fs-5">Propiedades</span>
-                </div>
-
-                {% if ent.tipo == "Persona" %}
-                    <!--<p>Persona...</p>-->
-                {% endif %}
-
-                <div>
-                    <table class="table bg-light border table-striped">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Identidad y Contacto</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Descripción y Acceso</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Servicios y Control</button>
+    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">Punto de Acceso</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+    <div class="mb-4 bg-body-primary rounded-3 ">            
+           
+            <div class="border-start border-end border-bottom p-4">
+                    <table class="table bg-light table-striped border">
                         <thead>
                             <tr>                            
                             <th scope="col">Atributo</th>
@@ -36,23 +39,24 @@ Detalles de Entidad
                         <tbody>
                             <tr>                            
                                 <td>Nombre</td>
-                                <td>{{ent.nombre}}</td>
+                                <td>{{i.nombre}}</td>
                                 <td><a href="#">e</a></td>
                             </tr>
                             <tr>                            
                                 <td>Tipo</td>
-                                <td>{{ent.tipo}}</td>
+                                <td>{{i.tipo}}</td>
                                 <td></td>
                             </tr>                        
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="mb-5 bg-body-primary rounded-3">    
-                <div class="mb-3">
-                    <span class="fs-5">Relaciones</span>
-                </div>            
-                <div>
+
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <div class="mb-5 bg-body-primary rounded-3">    
+                          
+                <div class="border-start border-end border-bottom p-4">
                     <table class="table border table-striped">
                         <thead>
                             <tr>                            
@@ -64,18 +68,35 @@ Detalles de Entidad
                         <tbody>
                             <tr>                            
                                 <td>Nombre</td>
-                                <td>{{ent.nombre}}</td>
+                                <td>{{i.nombre}}</td>
                                 <td><a href="#">e</a></td>
                             </tr>
                             <tr>                            
                                 <td>Tipo</td>
-                                <td>{{ent.tipo}}</td>
+                                <td>{{i.tipo}}</td>
                                 <td></td>
                             </tr>                            
                         </tbody>
                     </table>
                 </div>
             </div>
+
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
+</div>
+
+
+            <div class="mb-4 bg-body-primary rounded-3 ">    
+                
+
+                {% if i.tipo == "Persona" %}
+                    <!--<p>Persona...</p>-->
+                {% endif %}
+
+                
+            </div>
+            
             
         </div>     
         {% endfor %}  
