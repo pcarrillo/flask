@@ -1,479 +1,705 @@
 {% extends "base.html" %} {%block body%}
-<form action="/instituciones/crear" method="post">
-  <div class="row mb-3 pb-3">
-    <div class="col">
-      <span class="fs-5 fw-bold">Nueva Institución</span>
-    </div>
-  </div>
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3">
-      <div class="col">
-        <span class="fs-6 fw-bold">Área de Identidad</span>
-      </div>
-    </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          placeholder="Identificador"
-          class="form-control"
-          name="nombre"
-          id="nombre"
-        />
+<h1 class="text-2xl mb-5">Nueva Institución</h1>
+<!-- Form -->
+<form class="w-full" action="/instituciones/crear" method="post">
+  <div
+    tabindex="0"
+    class="collapse collapse-open collapse-arrow bg-base-100 border-base-300 border mb-4"
+  >
+    <div class="collapse-content text-sm">
+      <div class="text-center p-8">
+        <ul class="steps text-sm">
+          <li class="step step-primary">Identidad</li>
+          <li class="step">Contacto</li>
+          <li class="step">Descripción</li>
+          <li class="step">Acceso</li>
+          <li class="step">Servicios</li>
+          <li class="step">Control</li>
+          <li class="step">Puntos de acceso</li>
+        </ul>
       </div>
-    </div>
+      <div class="w-full">
+        <!--<hr />-->
+        <div class="mt-4">
+          <div>
+            <h2 class="text-xl font-bold">Área de Identidad</h2>
+          </div>
+        </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Forma autorizada del nombre"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Forma(s) paralela(s) de nombre"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
+        <div class="mb-4 mt-4">
+          <div class="w-full">
+            <label for="identificador"
+              >Identificador
+              <div class="pt-3 text-gray-400">
+                Ejemplo: ES.08019.ACA<br />
+                España. Subdirección General de los Archivos Estatales<br />
+                Nota: Para la institución Archivo de la Corona de Aragón
+              </div>
+              <div
+                class="tooltip"
+                data-tip='"Registrar el código numérico o alfanumérico que identifica a la institución, de acuerdo con los estándares internacionales relevantes." (ISDIAH 5.1.1). '
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                  />
+                </svg>
+              </div>
+            </label>
+            <input
+              type="text"
+              placeholder="Identificador"
+              class="input w-full mt-2"
+              name="identificador"
+              id="identificador"
+            />
+          </div>
+        </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Otra(s) forma(s) de nombre"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Tipo</option>
-          <option value="1">Comunitario</option>
-          <option value="2">Educativo</option>
-          <option value="3">Internacional</option>
-          <option value="3">Médico</option>
-          <option value="3">Militar</option>
-          <option value="3">Municipal</option>
-          <option value="3">Nacional</option>
-          <option value="3">Provincial/Estatal</option>
-          <option value="3">Regional</option>
-          <option value="3">Religioso</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <!--<hr />-->
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3 pt-4">
-      <div class="col">
-        <span class="fs-6 fw-bold">Área de contacto</span>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <span class="fs-6">Principal</span>
-      </div>
-    </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="forma-autorizada-nombre"
+              >Forma autorizada del nombre
+              <div
+                class="tooltip"
+                data-tip='"Registrar la forma autorizada del nombre de la institución, añadiendo los calificadores necesarios (por ejemplo fechas, lugares, etc.), si es necesario. Especificar separadamente qué set de relglas han sido aplicadas para este elemento, en el elemento de Reglas y/o convenciones usadas (5.6.3)." (ISDIAH 5.1.2)'
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                  />
+                </svg>
+              </div>
+            </label>
+            <input
+              type="text"
+              class="input mt-2"
+              placeholder="Forma autorizada del nombre"
+              aria-label="First name"
+              id="forma-autorizada-nombre"
+              name="forma-autorizada-nombre"
+            />
+          </div>
+          <div>
+            <label for="forma-paralela-nombre"
+              >Forma(s) paralela(s) de nombre
+              <div
+                class="tooltip"
+                data-tip="Ayuda del Forma(s) paralela(s) de nombre"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                  />
+                </svg>
+              </div>
+            </label>
+            <input
+              type="text"
+              class="input mt-2"
+              placeholder="Forma(s) paralela(s) de nombre"
+              aria-label="Last name"
+              id="forma-paralela-nombre"
+              name="forma-paralela-nombre"
+            />
+          </div>
+        </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          placeholder="Persona de contacto"
-          class="form-control"
-          name="nombre"
-          id="nombre"
-        />
-      </div>
-      <div class="col">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="checkDefault"
-          />
-          <label class="form-check-label" for="checkDefault">
-            Contacto Principal
-          </label>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="otra-forma-nombre"
+              >Otra(s) forma(s) de nombre
+              <div
+                class="tooltip"
+                data-tip="Ayuda de Otra(s) forma(s) de nombre"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                  />
+                </svg>
+              </div>
+            </label>
+            <input
+              type="text"
+              class="input mt-2"
+              placeholder="Otra(s) forma(s) de nombre"
+              aria-label="First name"
+              id="otra-forma-nombre"
+              name="otra-forma-nombre"
+            />
+          </div>
+          <div>
+            <label for="tipo"
+              >Tipo
+              <div class="tooltip" data-tip="Ayuda de Tipo">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                  />
+                </svg>
+              </div>
+            </label>
+            <select
+              id="tipo"
+              name="tipo"
+              class="select"
+              aria-label="Default select example"
+            >
+              <option selected disabled>Tipo</option>
+              <option value="Comunitario">Comunitario</option>
+              <option value="Educativo">Educativo</option>
+              <option value="Educativo">Educativo</option>
+              <option value="Médico">Médico</option>
+              <option value="Militar">Militar</option>
+              <option value="Municipal">Municipal</option>
+              <option value="Nacional">Nacional</option>
+              <option value="Provincial/Estatal">Provincial/Estatal</option>
+              <option value="Regional">Regional</option>
+              <option value="Religioso">Religioso</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Teléfono"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Fax"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Correo electrónico"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="URL"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <span class="fs-6">Localización</span>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Dirección"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Región/Provincia"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Código postal"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ciudad"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Latitud"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Longitud"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
   </div>
-  <div class="row mb-3">
-    <div class="col">
-      <span class="fs-6">Otros detalles</span>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col">
-      <textarea class="form-control" name="note" rows="3">
+  <!--    <div tabindex="1" class="collapse collapse-arrow bg-base-100 border-base-300 border  mb-4">
+            <div class="collapse-title font-semibold">Área de contacto</div>
+            <div class="collapse-content text-sm">
+                <div class="mt-4 mb-4">
+                    <div>
+                        <span class="fs-6">Principal</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4 mt-4">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Persona de contacto"
+                            class="input"
+                            name="nombre"
+                            id="nombre"
+                        />
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input
+                                class="checkbox"
+                                type="checkbox"
+                                value=""
+                                id="checkDefault"
+                            />
+                            <label class="form-check-label" for="checkDefault">
+                                Contacto Principal
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Teléfono"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Fax"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div tabindex="2" class="collapse collapse-arrow bg-base-100 border-base-300 border  mb-4">
+            <div class="collapse-title font-semibold">Área de descripción</div>
+            <div class="collapse-content text-sm">
+                Click the "Sign Up" button in the top right corner and follow the registration process.
+            </div>
+        </div>
+
+        <div tabindex="3" class="collapse collapse-arrow bg-base-100 border-base-300 border  mb-4">
+            <div class="collapse-title font-semibold">Área de acceso</div>
+            <div class="collapse-content text-sm">
+                Click the "Sign Up" button in the top right corner and follow the registration process.
+            </div>
+        </div>
+        <div tabindex="3" class="collapse collapse-arrow bg-base-100 border-base-300 border mb-4">
+            <div class="collapse-title font-semibold">Área de servicios</div>
+            <div class="collapse-content text-sm">
+                Click the "Sign Up" button in the top right corner and follow the registration process.
+            </div>
+        </div>
+        <div tabindex="4" class="collapse collapse-arrow bg-base-100 border-base-300 border mb-4">
+            <div class="collapse-title font-semibold">Área de control</div>
+            <div class="collapse-content text-sm">
+                Click the "Sign Up" button in the top right corner and follow the registration process.
+            </div>
+        </div>
+        <div tabindex=5" class="collapse collapse-arrow bg-base-100 border-base-300 border mb-4">
+            <div class="collapse-title font-semibold">Puntos de acceso</div>
+            <div class="collapse-content text-sm">
+                <div >
+
+                    <div class="mb-4">
+                        <div>
+                            <span>Puntos de acceso</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Área temática"
+                                class="input"
+                                name="nombre"
+                                id="nombre"
+                            />
+                        </div>
+
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Subregión geográfica"
+                                class="input"
+                                name="nombre"
+                                id="nombre"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+            <div>
+                 <div class="mt-4 mb-4">
+                    <div>
+                        <span class="fs-6">Principal</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-4 mt-4">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Persona de contacto"
+                            class="input"
+                            name="nombre"
+                            id="nombre"
+                        />
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input
+                                class="checkbox"
+                                type="checkbox"
+                                value=""
+                                id="checkDefault"
+                            />
+                            <label class="form-check-label" for="checkDefault">
+                                Contacto Principal
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Teléfono"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Fax"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="email"
+                            class="input"
+                            placeholder="Correo electrónico"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="URL"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+                        <span>Localización</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Dirección"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Región/Provincia"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Código postal"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Ciudad"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Latitud"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Longitud"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div>
+                    <span>Otros detalles</span>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div>
+      <textarea class="textarea w-full" name="note" rows="3">
 El tipo de información de contacto</textarea
       >
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col">
-      <textarea class="form-control" name="note" rows="3">Notas</textarea>
-    </div>
-  </div>
-  <!--<hr />-->
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3 pt-4">
-      <div class="col">
-        <span class="fs-6 fw-bold">Área de descripción</span>
-      </div>
-    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <textarea class="textarea w-full" name="note" rows="3">Notas</textarea>
+                </div>
+            </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">Historia</textarea>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+
+
+
+            <div>
+
+                <div class="mb-4 mt-4">
+                    <div>
+                        <span>Área de descripción</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div>
+                        <textarea class="textarea w-full" name="note" rows="3">Historia</textarea>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Contexto geográfico y cuultural</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea  w-full" name="note" rows="3">
 Mandatos/Fuentes de autoridad</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Estructura administrativa</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Administración de registros y políticas de recolección</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">Edificios</textarea>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+                        <textarea class="textarea w-full" name="note" rows="3">Edificios</textarea>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Fondos y colecciones</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Instrumentos de descripción, guías y publicaciones</textarea
         >
-      </div>
-    </div>
-  </div>
-  <!--<hr />-->
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3 pt-4">
-      <div class="col">
-        <span class="fs-6 fw-bold">Área de acceso</span>
-      </div>
-    </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+            <div>
+
+                <div class="mb-4">
+                    <div>
+                        <span>Área de acceso</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Horario de apertura</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Condiciones y requisitos</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Accesibilidad</textarea
         >
-      </div>
-    </div>
-  </div>
-  <!--<hr />-->
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3 pt-4">
-      <div class="col">
-        <span class="fs-6 fw-bold">Área de servicios</span>
-      </div>
-    </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+            <div>
+
+                <div class="mb-4">
+                    <div>
+                        <span>Área de servicios</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Servicios para la investigación</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Servicios de reproducción</textarea
         >
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+        <textarea class="textarea w-full" name="note" rows="3">
 Áreas públicas</textarea
         >
-      </div>
-    </div>
-  </div>
-  <!--<hr />-->
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3 pt-4">
-      <div class="col">
-        <span class="fs-6 fw-bold">Área de control</span>
-      </div>
-    </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Identificador de la descripción"
-          aria-label="First name"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Identificador de la institución"
-          aria-label="Last name"
-        />
-      </div>
-    </div>
+            <div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
-Reglas y/o convenciones usadas</textarea
-        >
-      </div>
-    </div>
+                <div class="mb-4">
+                    <div>
+                        <span>Área de control</span>
+                    </div>
+                </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Estado de elaboración</option>
-          <option value="1">Final</option>
-          <option value="2">Revisado</option>
-          <option value="3">Minuta</option>
-        </select>
-      </div>
-      <div class="col">
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Nivel de detalles</option>
-          <option value="1">Completo</option>
-          <option value="2">Parcial</option>
-          <option value="3">Mínimo</option>
-        </select>
-      </div>
-    </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Identificador de la descripción"
+                            aria-label="First name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            class="input"
+                            placeholder="Identificador de la institución"
+                            aria-label="Last name"
+                        />
+                    </div>
+                </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
-    Fechas de creación, revisión o eliminación</textarea
-        >
-      </div>
-    </div>
+                <div class="mb-4">
+                    <div>
+                        <textarea class="textarea w-full" name="note" rows="3">
+                Reglas y/o convenciones usadas</textarea
+                        >
+                    </div>
+                </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Idioma</option>
-          <option value="1">Final</option>
-          <option value="2">Revisado</option>
-          <option value="3">Minuta</option>
-        </select>
-      </div>
-      <div class="col">
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Escritura</option>
-          <option value="1">Completo</option>
-          <option value="2">Parcial</option>
-          <option value="3">Mínimo</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">Fuentes</textarea>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <textarea class="form-control" name="note" rows="3">
-Notas de mantención</textarea
-        >
-      </div>
-    </div>
-  </div>
-  <!--<hr />-->
-  <div class="mb-3">
-    <!--<hr />-->
-    <div class="row mb-3 pt-4">
-      <div class="col">
-        <span class="fs-6 fw-bold">Puntos de acceso</span>
-      </div>
-    </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <select class="select" aria-label="Default select example">
+                            <option selected disabled>Estado de elaboración</option>
+                            <option value="1">Final</option>
+                            <option value="2">Revisado</option>
+                            <option value="3">Minuta</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="select" aria-label="Default select example">
+                            <option selected disabled>Nivel de detalles</option>
+                            <option value="1">Completo</option>
+                            <option value="2">Parcial</option>
+                            <option value="3">Mínimo</option>
+                        </select>
+                    </div>
+                </div>
 
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          placeholder="Área temática"
-          class="form-control"
-          name="nombre"
-          id="nombre"
-        />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          type="text"
-          placeholder="Subregión geográfica"
-          class="form-control"
-          name="nombre"
-          id="nombre"
-        />
-      </div>
-    </div>
-  </div>
-  <!--<hr />-->
+                <div class="mb-4">
+                    <div>
+                        <textarea class="textarea w-full" name="note" rows="3">
+                    Fechas de creación, revisión o eliminación</textarea
+                        >
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <select class="select" aria-label="Default select example">
+                            <option selected disabled>Idioma</option>
+                            <option value="1">Final</option>
+                            <option value="2">Revisado</option
+                            <option value="3">Minuta</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="select" aria-label="Default select example">
+                            <option selected disabled>Escritura</option>
+                            <option value="1">Completo</option>
+                            <option value="2">Parcial</option>
+                            <option value="3">Mínimo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+                        <textarea class="textarea w-full" name="note" rows="3">Fuentes</textarea>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+                        <textarea class="textarea w-full" name="note" rows="3">
+                            Notas de mantención</textarea>
+                    </div>
+                </div>
+            </div>-->
+
+  <!--Inicio del resto de pantallas-->
 
   <div>
     <button type="submit" class="btn btn-primary">Grabar</button>
