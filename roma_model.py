@@ -90,7 +90,17 @@ class Datos:
         results, meta = db.cypher_query(query)
 
     def buscarEntidad(self, id_entidad):
-        query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name_es as tipo, e.uid as uid"
+        #query = "MATCH (e:Entity)-[r:hasOrHadCategory]->(t:Type) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  t.name_es as tipo, e.uid as uid"
+        #query = "MATCH (e:CorporateBody) WHERE elementId(e) ='" + str(id_entidad) + "' RETURN elementId(e) as id, e.name as nombre,  e.uid as uid"
+        query = "MATCH (n:CorporateBody)-[r:hasOrHadIdentifier]->(i:Identifier) WHERE n.uid = '" + str(id_entidad) + "' return n.name as institucion, n.uid as uid,  i.name as identifier"
+        results, meta = db.cypher_query(query)
+        entidad = [dict(zip(meta, row)) for row in results] 
+        return entidad
+    
+    
+    
+    def getCorporateBodyNames(self, id_entidad):        
+        query = "MATCH (t:Type)-[r3:hasOrHadType]-(m:Name)-[r2:hasOrHadName]-(n:CorporateBody) WHERE n.uid = '" + str(id_entidad) + "' return  m.name as name,  t.name  as nametype   ORDER BY n.name "
         results, meta = db.cypher_query(query)
         entidad = [dict(zip(meta, row)) for row in results] 
         return entidad
@@ -113,7 +123,7 @@ class Datos:
     
     def Instituciones_ver(self):
         #query = "match(n:Entity)-[r:hasOrHadCategory]->(t:Type{name_es:'Institución'}) return elementId(n) as id, n.name as nombre ORDER BY n.name"
-        query="MATCH (n:CorporateBody) return elementId(n) as id, n.name as nombre ORDER BY n.name"
+        query="MATCH (n:CorporateBody) return elementId(n) as id, n.uid as uid , n.name as nombre ORDER BY n.namee"
         results, meta = db.cypher_query(query)
         instituciones = [dict(zip(meta, row)) for row in results] 
         return instituciones

@@ -89,10 +89,11 @@ def instituciones():
     instituciones = Datos.Instituciones_ver()
     return render_template("instituciones/index.html", instituciones=instituciones)
 
-@app.route("/instituciones/ver/<id>")
-def instituciones_ver(id):    
-    institucion = Datos.buscarEntidad(id)  
-    return render_template("/instituciones/show.html", institucion=institucion)
+@app.route("/instituciones/ver/<uid>")
+def instituciones_ver(uid):
+    institucion = Datos.buscarEntidad(uid)
+    institution_names = Datos.getCorporateBodyNames(uid)
+    return render_template("/instituciones/show.html", institution=institucion, names=institution_names)
 
 @app.route("/instituciones/nueva")
 def instituciones_nueva():
@@ -120,24 +121,43 @@ def instituciones_crear():
             
             #Forma autorizada del nombre
             auth_name = Name(name=request.form["forma-autorizada-nombre"]).save()
-            auth_name_type = Type(name='Forma autorizada del nombre').save()
+
+            if Type.nodes.get_or_none(name='Forma autorizada del nombre') == None:
+                auth_name_type = Type(name='Forma autorizada del nombre').save()
+            else:
+                auth_name_type = Type.nodes.get(name='Forma autorizada del nombre')
+
             auth_name.type.connect(auth_name_type)
             institucion.authorize_name.connect(auth_name)
             
             #Forma paralela del nombre
             paral_name = Name(name=request.form["forma-paralela-nombre"]).save()
-            paral_name_type = Type(name='Forma paralela de nombre').save()
+
+            if Type.nodes.get_or_none(name='Forma paralela de nombre') == None:
+                paral_name_type = Type(name='Forma paralela de nombre').save()
+            else:
+                paral_name_type = Type.nodes.get(name='Forma paralela de nombre')
+
             paral_name.type.connect(paral_name_type)
             institucion.parallel_name.connect(paral_name)
             
             #Otras formas del nombre
             other_name = Name(name=request.form["otra-forma-nombre"]).save()
-            other_name_type = Type(name='Otra forma de nombre').save()
+
+            if Type.nodes.get_or_none(name='Otra forma de nombre') == None:
+                other_name_type = Type(name='Otra forma de nombre').save()
+            else:
+                other_name_type = Type.nodes.get(name='Otra forma de nombre')
+
             other_name.type.connect(other_name_type)
             institucion.other_name.connect(other_name)
             
             #Tipo
-            tipo2 = Type(name=request.form.get("tipo")).save()
+            if Type.nodes.get_or_none(name=request.form.get("tipo")) == None:
+                tipo2 = Type(name=request.form.get("tipo")).save()
+            else:
+                tipo2 = Type.nodes.get(name=request.form.get("tipo"))
+
             institucion.type.connect(tipo2)
                         
             db.commit()
