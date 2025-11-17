@@ -7,6 +7,9 @@ head %} {%block body%}
 
      {%for i in institution%}
          <h1 class="text-2xl mb-3">{{i.institucion}}</h1>
+         <div class="text-end">
+    <a href="/instituciones/editar" class="btn">Editar Institución</a>
+  </div>
          <table class="table">
          <thead>
          <tr>
