@@ -1,26 +1,31 @@
 {% extends "base.html" %} {% block head %} Tipos {% endblock head %} {%block
 body%}
 
-<div class="list-group">
-  <div class="mb-3">
-    <a href="/tipos/nuevo" class="btn btn-primary">Nuevo Tipo</a>
+<div>
+
+<h1 class="text-2xl">Tipos</h1>
+  <div class="text-end">
+    <a href="/tipos/nuevo" class="btn">Nuevo Tipo</a>
   </div>
 
+<table class="table">
+    <thead>
+   <tr> <th>
+        Nombre
+    </th></tr>
+    </thead>
+<tbody>
   {% if tipos %} {%for tipo in tipos%}
-  <!--Inicio unidad-->
-
+<tr><td>
   <a
-    href="/instituciones/ver/{{tipo.id}}"
-    class="list-group-item list-group-item-action"
-  >
-    <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">{{tipo.nombre}}</h6>
-    </div>
-  </a>
-
+    href="/tipos/ver/{{tipo.id}}"
+  >{{tipo.nombre}}</a>
+</td></tr>
   {% endfor %} {% else %}
-  <p>No hay instituciones</p>
+      <tr><td>No hay instituciones</td></tr>
   {% endif %}
+</tbody>
+</table>
 </div>
 {% endblock %}
 
