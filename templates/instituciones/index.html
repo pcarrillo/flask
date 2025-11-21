@@ -1,43 +1,127 @@
-{% extends "base.html" %} {% block head %} Inicio {% endblock head %} {%block
-body%} {# Nivceles de descripción de Indias Archivo General de Indias Colección
-Fondo Serie Subserie Fracción de Serie-Unidad de Instalación Sección Serie
-Fracción de Serie-Unidad de Instalación 1ª División - Pueden haber más Fracción
-de Serie-Unidad de Instalación Grupo de Fondos Fondo Fracción de Serie-Unidad de
-Instalación Fracción de Serie-Unidad de Instalación Colección Sección #}
-
 <div>
-<h1 class="text-2xl">Instituciones</h1>
-  <div class="text-end">
-    <a href="/instituciones/nueva" class="btn">Nueva Institución</a>
-  </div>
-<table class="table mt-4">
-<thead>
-    <tr>
-        <th>Nombre</th>
-    </tr>
-</thead>
-<tbody>
-  {% if instituciones %}
-      {%for institucion in instituciones%}
-            <tr>
-                 <td>
-                    <a href="/instituciones/ver/{{institucion.uid}}">{{institucion.nombre}}</a>
-                  </td>
-            </tr>
-        {% endfor %}
-  {% else %}
-     <tr>
-         <td>No hay instituciones</td>
-     </tr>
-  {% endif %}
-</tbody>
-</table>
-</div>
-{% endblock %}
+    <h1 class="text-2xl">Instituciones</h1>
 
-<!--
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content"/>
-        <input type="submit" name="submit" value="Nueva Tarea" id="btn_add" />
-    </form>
-    -->
+    <dialog
+        id="modalNuevaInstitucion"
+        class="modal modal-middle sm:modal-middle"
+    >
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Nueva Institución</h3>
+            <div>
+                <form mx-post="/instituciones/crear" method="post">
+                    <div class="mb-4 mt-4">
+                        <div class="w-full">
+                            <label class="text-sm" for="identificador"
+                                >Identificador
+                                <input
+                                    type="text"
+                                    placeholder="Ej. para el Archivo General de Indias: ES.41091.AGI"
+                                    class="input mt-2 w-full"
+                                    name="identificador"
+                                    id="identificador"
+                                />
+                            </label>
+                        </div>
+                        <div class="mt-4">
+                            <label
+                                class="text-sm"
+                                for="forma-autorizada-nombre"
+                            >
+                                Forma autorizada del nombre
+                                <input
+                                    type="text"
+                                    class="input mt-2 w-full"
+                                    placeholder="Ej: Archivo General de Indias"
+                                    aria-label="First name"
+                                    id="forma-autorizada-nombre"
+                                    name="forma-autorizada-nombre"
+                                />
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="text-start">
+                <!--<form method="dialog">-->
+                <!-- if there is a button in form, it will close the modal -->
+                <button type="submit" class="btn">Grabar</button>
+                <button
+                    type="button"
+                    class="btn"
+                    onclick="modalNuevaInstitucion.close()"
+                >
+                    Cancelar
+                </button>
+                <!--</form>-->
+            </div>
+        </div>
+    </dialog>
+
+    <div class="text-end">
+        <!--<a
+            href="javascript:void(0)"
+            hx-get="/instituciones/nueva"
+            hx-target="#main-frame"
+            class="btn"
+            >Nueva Institución</a
+        >-->
+        <button class="btn" onclick="modalNuevaInstitucion.showModal()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+            </svg>
+            Nueva Institución
+        </button>
+    </div>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if instituciones %} {%for institucion in instituciones%}
+            <tr>
+                <td>
+                    <a href="/instituciones/ver/{{institucion[0]}}"
+                        >{{institucion[1]}}</a
+                    >
+                </td>
+                <td class="text-end">
+                    <a href="/instituciones/editar/{{institucion[0]}}"
+                        ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-5"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                            /></svg
+                    ></a>
+                </td>
+            </tr>
+            {% endfor %} {% else %}
+            <tr>
+                <td>No hay instituciones</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>

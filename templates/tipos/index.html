@@ -1,37 +1,40 @@
-{% extends "base.html" %} {% block head %} Tipos {% endblock head %} {%block
-body%}
-
-<div>
-
 <h1 class="text-2xl">Tipos</h1>
-  <div class="text-end">
-    <a href="/tipos/nuevo" class="btn">Nuevo Tipo</a>
-  </div>
-
-<table class="table">
-    <thead>
-   <tr> <th>
-        Nombre
-    </th></tr>
-    </thead>
-<tbody>
-  {% if tipos %} {%for tipo in tipos%}
-<tr><td>
-  <a
-    href="/tipos/ver/{{tipo.id}}"
-  >{{tipo.nombre}}</a>
-</td></tr>
-  {% endfor %} {% else %}
-      <tr><td>No hay instituciones</td></tr>
-  {% endif %}
-</tbody>
-</table>
+<div class="text-end mb-7">
+    <button class="btn btn-md">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+        </svg>
+        Nuevo tipo
+    </button>
 </div>
-{% endblock %}
-
-<!--
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content"/>
-        <input type="submit" name="submit" value="Nueva Tarea" id="btn_add" />
-    </form>
-    -->
+<div class="overflow-x-auto h-100 w-auto mb-10">
+    <table class="table table-pin-rows table-pin-cols">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Clase</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo in tipos %}
+            <tr class="hover:bg-gray-50">
+                <td>{{ tipo[0] }}</td>
+                <td>{{ tipo[1] }}</td>
+                <td>{{ tipo[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

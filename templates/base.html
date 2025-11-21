@@ -30,6 +30,7 @@
       defer
       src="https://unpkg.com/alpinejs@3.15.1/dist/cdn.min.js"
     ></script>
+  <script src="{{ url_for('static', filename='htmx/htmx.min.js') }}"></script>
   </head>
   <body class="bg-gray-100 p-15">
     <div class="max-w-4xl mx-auto">
@@ -39,19 +40,12 @@
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/instituciones">Instituciones</a></li>
-            <li><a href="/personas">Personas</a></li>
-            <li><a href="/entidades">Entidades</a></li>
-            <li>
-              <details>
-                <summary>Administración</summary>
-                <ul class="bg-base-100 rounded-t-none p-2">
-                  <li><a href="/tipos">Tipos</a></li>
-                  <li><a>Link 2</a></li>
-                </ul>
-              </details>
-            </li>
+            <li><a href="javascript:void(0);" hx-get="/" hx-target="body">Inicio</a></li>
+            <li><a href="javascript:void(0);" hx-get="/instituciones" hx-target="#main-frame">Instituciones</a></li>
+            <li><a href="javascript:void(0)" hx-get="/tipos" hx-target="#main-frame">Personas</a></li>
+            <li><a href="javascript:void(0)" hx-get="/tipos" hx-target="#main-frame">Entidades</a></li>
+            <li><a href="javascript:void(0)" hx-get="/tipos" hx-target="#main-frame">Tipos</a></li>
+
           </ul>
           <label class="swap swap-rotate">
             <!-- this hidden checkbox controls the state -->

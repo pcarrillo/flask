@@ -1,0 +1,26 @@
+<form action="/instituciones/crear" method="post">
+    <div class="grid grid-cols-3 gap-4 mb-4 mt-4">
+        <div class="w-full">
+            <input
+                type="text"
+                placeholder="Ejemplo: ES.08019.ACA"
+                class="input mt-2"
+                name="identificador"
+                id="identificador"
+            />
+        </div>
+        <div>
+            <input
+                type="text"
+                class="input mt-2"
+                placeholder="Forma autorizada del nombre"
+                aria-label="First name"
+                id="forma-autorizada-nombre"
+                name="forma-autorizada-nombre"
+            />
+        </div>
+        <div>
+            <button type="submit" class="btn">Grabar</button>
+        </div>
+    </div>
+</form>

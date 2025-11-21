@@ -1,85 +1,216 @@
 <h1 class="text-2xl mb-5">Nueva Institución</h1>
 <!-- Form -->
-<form action="/instituciones/crear" method="post">
-    <div class="w-full">
-        <!--<hr />-->
-        <div class="mt-4">
-            <div>
-                <h2 class="text-xl font-bold">Área de Identidad</h2>
+<form class="w-full" action="/instituciones/crear" method="post">
+    <div
+        tabindex="0"
+        class="collapse collapse-open collapse-arrow bg-base-100 border-base-300 border mb-4"
+    >
+        <div class="collapse-content text-sm">
+            <div class="text-center p-8">
+                <ul class="steps text-sm">
+                    <li class="step step-primary">Identidad</li>
+                    <li class="step">Contacto</li>
+                    <li class="step">Descripción</li>
+                    <li class="step">Acceso</li>
+                    <li class="step">Servicios</li>
+                    <li class="step">Control</li>
+                    <li class="step">Puntos de acceso</li>
+                </ul>
             </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 mb-4 mt-4">
             <div class="w-full">
-                <input
-                    type="text"
-                    placeholder="Ejemplo: ES.08019.ACA"
-                    class="input mt-2"
-                    name="identificador"
-                    id="identificador"
-                />
-            </div>
-            <div>
-                <input
-                    type="text"
-                    class="input mt-2"
-                    placeholder="Forma autorizada del nombre"
-                    aria-label="First name"
-                    id="forma-autorizada-nombre"
-                    name="forma-autorizada-nombre"
-                />
-            </div>
-        </div>
+                <!--<hr />-->
+                <div class="mt-4">
+                    <div>
+                        <h2 class="text-xl font-bold">Área de Identidad</h2>
+                    </div>
+                </div>
 
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div>
-                <input
-                    type="text"
-                    class="input mt-2"
-                    placeholder="Forma(s) paralela(s) de nombre"
-                    aria-label="Last name"
-                    id="forma-paralela-nombre"
-                    name="forma-paralela-nombre"
-                />
-            </div>
-            <div>
-                <input
-                    type="text"
-                    class="input mt-2"
-                    placeholder="Otra(s) forma(s) de nombre"
-                    aria-label="First name"
-                    id="otra-forma-nombre"
-                    name="otra-forma-nombre"
-                />
-            </div>
-        </div>
+                <div class="mb-4 mt-4">
+                    <div class="w-full">
+                        <label for="identificador"
+                            >Identificador
+                            <div class="pt-3 text-gray-400">
+                                Ejemplo: ES.08019.ACA<br />
+                                España. Subdirección General de los Archivos
+                                Estatales<br />
+                                Nota: Para la institución Archivo de la Corona
+                                de Aragón
+                            </div>
+                            <div
+                                class="tooltip"
+                                data-tip='"Registrar el código numérico o alfanumérico que identifica a la institución, de acuerdo con los estándares internacionales relevantes." (ISDIAH 5.1.1). '
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="size-5"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                                    />
+                                </svg>
+                            </div>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Identificador"
+                            class="input w-full mt-2"
+                            name="identificador"
+                            id="identificador"
+                        />
+                    </div>
+                </div>
 
-        <div class="gap-4 mt-2 mb-4">
-            <div>
-                <select
-                    id="tipo"
-                    name="tipo"
-                    class="select"
-                    aria-label="Default select example"
-                >
-                    <option selected disabled>Tipo</option>
-                    <option value="Comunitario">Comunitario</option>
-                    <option value="Educativo">Educativo</option>
-                    <option value="Educativo">Educativo</option>
-                    <option value="Médico">Médico</option>
-                    <option value="Militar">Militar</option>
-                    <option value="Municipal">Municipal</option>
-                    <option value="Nacional">Nacional</option>
-                    <option value="Provincial/Estatal">
-                        Provincial/Estatal
-                    </option>
-                    <option value="Regional">Regional</option>
-                    <option value="Religioso">Religioso</option>
-                </select>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="forma-autorizada-nombre"
+                            >Forma autorizada del nombre
+                            <div
+                                class="tooltip"
+                                data-tip='"Registrar la forma autorizada del nombre de la institución, añadiendo los calificadores necesarios (por ejemplo fechas, lugares, etc.), si es necesario. Especificar separadamente qué set de relglas han sido aplicadas para este elemento, en el elemento de Reglas y/o convenciones usadas (5.6.3)." (ISDIAH 5.1.2)'
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="size-5"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                                    />
+                                </svg>
+                            </div>
+                        </label>
+                        <input
+                            type="text"
+                            class="input mt-2"
+                            placeholder="Forma autorizada del nombre"
+                            aria-label="First name"
+                            id="forma-autorizada-nombre"
+                            name="forma-autorizada-nombre"
+                        />
+                    </div>
+                    <div>
+                        <label for="forma-paralela-nombre"
+                            >Forma(s) paralela(s) de nombre
+                            <div
+                                class="tooltip"
+                                data-tip="Ayuda del Forma(s) paralela(s) de nombre"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="size-5"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                                    />
+                                </svg>
+                            </div>
+                        </label>
+                        <input
+                            type="text"
+                            class="input mt-2"
+                            placeholder="Forma(s) paralela(s) de nombre"
+                            aria-label="Last name"
+                            id="forma-paralela-nombre"
+                            name="forma-paralela-nombre"
+                        />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="otra-forma-nombre"
+                            >Otra(s) forma(s) de nombre
+                            <div
+                                class="tooltip"
+                                data-tip="Ayuda de Otra(s) forma(s) de nombre"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="size-5"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                                    />
+                                </svg>
+                            </div>
+                        </label>
+                        <input
+                            type="text"
+                            class="input mt-2"
+                            placeholder="Otra(s) forma(s) de nombre"
+                            aria-label="First name"
+                            id="otra-forma-nombre"
+                            name="otra-forma-nombre"
+                        />
+                    </div>
+                    <div>
+                        <label for="tipo"
+                            >Tipo
+                            <div class="tooltip" data-tip="Ayuda de Tipo">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="size-5"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                                    />
+                                </svg>
+                            </div>
+                        </label>
+                        <select
+                            id="tipo"
+                            name="tipo"
+                            class="select"
+                            aria-label="Default select example"
+                        >
+                            <option selected disabled>Tipo</option>
+                            <option value="Comunitario">Comunitario</option>
+                            <option value="Educativo">Educativo</option>
+                            <option value="Educativo">Educativo</option>
+                            <option value="Médico">Médico</option>
+                            <option value="Militar">Militar</option>
+                            <option value="Municipal">Municipal</option>
+                            <option value="Nacional">Nacional</option>
+                            <option value="Provincial/Estatal">
+                                Provincial/Estatal
+                            </option>
+                            <option value="Regional">Regional</option>
+                            <option value="Religioso">Religioso</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
     <!--    <div tabindex="1" class="collapse collapse-arrow bg-base-100 border-base-300 border  mb-4">
             <div class="collapse-title font-semibold">Área de contacto</div>
             <div class="collapse-content text-sm">
@@ -573,6 +704,6 @@ Servicios de reproducción</textarea
     <!--Inicio del resto de pantallas-->
 
     <div>
-        <button type="submit" class="btn">Grabar</button>
+        <button type="submit" class="btn btn-primary">Grabar</button>
     </div>
 </form>

@@ -1,15 +1,5 @@
 {% extends "base.html" %} {% block head %} Inicio {% endblock head %} {%block
 body%}
-<h1 class="text-2xl">Inicio</h1>
-<div>
-  {%for entidad in entidades%}
-  <a href="/entidades/ver/{{entidad.id}}">
-    <div>
-      <h6>{{entidad.nombre}}</h6>
-    </div>
-    <p>{{entidad.tipo}}</p>
-  </a>
 
-  {% endfor %}
-</div>
+<div id="main-frame"/>
 {% endblock %}
